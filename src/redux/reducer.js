@@ -1,17 +1,18 @@
 import {
   GET_PRODUCTS,
-  GET_PRODUCTS_NAME,
+  GET_PRODUCTS_ID,
   GET_STOCK,
   ORDER_BY_NAME,
   ORDER_BY_PRICE,
-} from "./action";
+} from "./action.js";
 
 const initialState = {
   product: [],
   stock: [],
+  detail: [],
   filterProduct: [],
 };
-function reducerProduct(state = initialState, action) {
+function rootReducer(state = initialState, action) {
   switch (action.type) {
     case GET_PRODUCTS:
       return {
@@ -20,10 +21,10 @@ function reducerProduct(state = initialState, action) {
         filterProduct: action.payload,
       };
 
-    case GET_PRODUCTS_NAME:
+    case GET_PRODUCTS_ID:
       return {
         ...state,
-        product: action.payload,
+        detail: action.payload,
       };
 
     case GET_STOCK:
@@ -60,4 +61,4 @@ function reducerProduct(state = initialState, action) {
   }
 }
 
-export default reducerProduct;
+export default rootReducer;

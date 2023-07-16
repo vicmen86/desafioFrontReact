@@ -2,14 +2,14 @@ import axios from "axios";
 export const ADD_PRODUCT = "ADD_PRODUCT";
 export const REMOVE_PRODUCT = "REMOVE_PRODUCT";
 export const GET_PRODUCTS = "GET_PRODUCTS";
-export const GET_PRODUCTS_NAME = "GET_PRODUCTS_NAME";
+export const GET_PRODUCTS_ID = "GET_PRODUCTS_ID";
 export const GET_STOCK = "GET_STOCK";
 export const ORDER_BY_NAME = "ORDER_BY_NAME";
 export const ORDER_BY_PRICE = "ORDER_BY_PRICE";
 
-export function getProducts() {
+export function getProducts(product) {
   return async function (dispatch) {
-    let json = await axios.get("http://localhost:3001/productos");
+    let json = await axios.get("http://localhost:3001/productos?name=" + product)
     return dispatch({ type: GET_PRODUCTS, payload: json.data });
   };
 }
@@ -23,17 +23,15 @@ export function addProduct(payload) {
 
 export function removeProduct(id) {
   return async function () {
-    let response = await axios.delete("http://localhost:3001/dogs/" + id);
+    let response = await axios.delete("http://localhost:3001/productos" + id);
     return response;
   };
 }
 
-export function getProductsName(product) {
+export function getProductId(id) {
   return async function (dispatch) {
-    let json = await axios.get(
-      "http://localhost:3001/productos?name=" + product
-    );
-    return dispatch({ type: GET_PRODUCTS_NAME, payload: json.data });
+    let json = await axios.get("http://localhost:3001/productos/" + id);
+    return dispatch({ type: GET_PRODUCTS_ID, payload: json.data });
   };
 }
 
