@@ -12,11 +12,11 @@ import {
 
 export default function Home() {
   const dispatch = useDispatch();
-  const allProducts = useSelector((state) => state.products);
+  const allProducts = useSelector((state) => state.product);
 
   useEffect(() => {
     dispatch(getProducts()); //mapdistpachtoprops
-  }, [dispatch]);
+  },[dispatch]);
 
   /*   useEffect(()=> {
     dispatch(getStock());
@@ -63,9 +63,9 @@ export default function Home() {
                 <Products
                   key={p.id}
                   nombre={p.nombre}
+                  tipoProducto={p.tipoProducto}
                   detalle={p.detalle}
                   precio={p.precio}
-                  tipoProducto={p.tipoProducto}
                 />
                 </Link>
               </div>

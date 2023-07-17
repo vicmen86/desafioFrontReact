@@ -6,9 +6,19 @@ import { addProduct } from "../redux/action";
 
 function validate(input) {
   let errors = {};
-  if (!input.name) {
-    errors.name = "Your breed must have a name";
+  if (!input.nombre) {
+    errors.nombre = "Este espacio no puede estar en blanco";
   }
+  else if (!input.tipoProductId) {//este servivio aun no esta completo, lo mas recomendable es que sea un select de todas las categorias disponibles de base de datos 
+    errors.tipoProductId = "Elige una categoria para tu producto";
+  }
+  else if (!input.detalle) { 
+    errors.detalle = "Da una breve descripcion del producto";
+  }
+  else if (!input.precio) { 
+    errors.precio = "Da una breve descripcion del producto";
+  }
+  return errors;
 }
 
 export default function CreateProduct() {
@@ -40,7 +50,7 @@ export default function CreateProduct() {
     console.log(errors);
     if (
       !Object.getOwnPropertyNames(errors).length &&
-      input.name &&
+      input.nombre &&
       input.tipoProductId &&
       input.detalle &&
       input.precio
@@ -63,7 +73,7 @@ export default function CreateProduct() {
       <Link to="/">
         <button className="buttonHome">HOME</button>
       </Link>
-      <h1 className="title">FORMULARIO PARA CREAR NUEVO PRODUCTO</h1>
+      <h2 className="title">FORMULARIO PARA CREAR NUEVO PRODUCTO</h2>
       <form onSubmit={(e) => handleSubmit(e)}>
         <div>
           <label>
@@ -71,13 +81,13 @@ export default function CreateProduct() {
           </label>
           <input
             type="text"
-            value={input.name}
-            name="name"
+            value={input.nombre}
+            name="nombre"
             onChange={(e) => handleChange(e)}
           />
-          {errors.name && (
+          {errors.nombre && (
             <p className="error">
-              <strong>{errors.name}</strong>
+              <strong>{errors.nombre}</strong>
             </p>
           )}
         </div>

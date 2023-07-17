@@ -18,7 +18,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         product: action.payload,
-        filterProduct: action.payload,
+        
       };
 
     case GET_PRODUCTS_ID:
@@ -33,7 +33,7 @@ function rootReducer(state = initialState, action) {
         stock: action.payload,
       };
     case ORDER_BY_NAME:
-      state.filterProduct.sort(function (a, b) {
+      state.product.sort(function (a, b) {
         if (a.name > b.name) {
           return 1;
         }
@@ -45,7 +45,7 @@ function rootReducer(state = initialState, action) {
       return state;
 
     case ORDER_BY_PRICE:
-      state.filterProduct.sort(function (a, b) {
+      state.product.sort(function (a, b) {
         if (a.precio > b.precio) {
           return 1;
         }
