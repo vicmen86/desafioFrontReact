@@ -9,7 +9,7 @@ export default function Stock() {
     dispatch(getStock());
   }, [dispatch]);
   const stock = useSelector((state) => state.stock);
-
+  console.log(stock);
   return (
     <div className="stock">
       <h1 className="title">STOCK DE PRODUCTOS ACTUALIZADO AL 15/7/23:</h1>
@@ -19,11 +19,12 @@ export default function Stock() {
         {stock.length > 0 ? (
           stock.map((s) => {
             return (
-              <li key={s.stock.id}>
-                <span>{s.stock.nombre}</span>
-                <span>{s.stock.cantidad}</span>
+              <li key={s.id}>
+                <span>N°: {s.idStock} |</span>
+                <span>Producto: {s.producto.nombre} |</span>
+                <span>Cantidad: {s.cantidad} </span>
 
-                <button>ACTUALIZAR</button>
+                <button>Actualizar</button>
               </li>
             ); //en esta liena agregamos a favoritos.
           })

@@ -43,7 +43,7 @@ export default function Home() {
                 ORDENAR POR PRECIO
               </button>
               <Link to="/create">
-                <button className="newdog">CARGAR PRODUCTO</button>
+                <button className="newdog">CREAR PRODUCTO</button>
               </Link>
               <Link to="/stock">
                 <button className="newdog">STOCK</button>
@@ -63,7 +63,7 @@ export default function Home() {
                 <Products
                   key={p.id}
                   nombre={p.nombre}
-                  tipoProducto={p.tipoProducto}
+                  tipoProducto={p.tipoProducto.descripcion}
                   detalle={p.detalle}
                   precio={p.precio}
                 />
