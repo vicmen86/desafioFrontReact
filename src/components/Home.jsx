@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -13,7 +13,7 @@ import {
 export default function Home() {
   const dispatch = useDispatch();
   const allProducts = useSelector((state) => state.product);
-
+const [,setSort] = useState('');
   useEffect(() => {
     dispatch(getProducts()); //mapdistpachtoprops
   },[dispatch]);
@@ -25,10 +25,14 @@ export default function Home() {
   function handleSortName(e) {
     e.preventDefault();
     dispatch(orderByName());
+    setSort('name')
+    console.log(allProducts);
   }
   function handleSortPrice(e) {
     e.preventDefault();
     dispatch(orderByPrice());
+    setSort('price')
+
   }
   return (
     <>

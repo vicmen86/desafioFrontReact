@@ -17,7 +17,6 @@ function App() {
         <Route path='/create' element={<CreateProduct/>}></Route>
         <Route path='/stock' element={<Stock/>}></Route>
         <Route exact path='/:id' component={DetailProduct}/>
-        
       </Routes>
     </div>
     

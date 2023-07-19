@@ -34,10 +34,10 @@ function rootReducer(state = initialState, action) {
       };
     case ORDER_BY_NAME:
       state.product.sort(function (a, b) {
-        if (a.name > b.name) {
+        if (a.nombre > b.nombre) {
           return 1;
         }
-        if (b.name > a.name) {
+        if (b.nombre > a.nombre) {
           return -1;
         }
         return 0;
